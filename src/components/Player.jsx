@@ -3,7 +3,7 @@ import { assets } from '../assets/assets'
 import { PlayerContext } from '../context/PlayerContest'
 
 const player = () => {
-  const {track,seekbg,seekbar,playStatus,play,pause} =useContext(PlayerContext)
+  const {track,seekbg,seekBar,playStatus,play,pause,time} =useContext(PlayerContext)
 
   return (
     <div className='h-[10%] bg-black flex justify-between item-center text-white px-4'>
@@ -25,11 +25,11 @@ const player = () => {
           <img className='w-4 cursor-pointer' src={assets.loop_icon} alt="" />
         </div>
         <div className='flex item-center gap-5'>
-          <p>1:06</p>
+          <p>{time.currentTime.minute}:{time.currentTime.second}</p>
           <div ref={seekbg} className='w-[60vw] max-w-[500px] bg-gray-300 rounded-full cursor-pointer h-1'>
-            <hr ref={seekbar} className='h-1 border-none w-20 bg-green-800 rounded-full' />
+            <hr ref={seekBar} className='h-1 border-none w-0 bg-green-800 rounded-full' />
           </div>
-          <p>3:20</p>
+          <p>{time.totalTime.minute}:{time.totalTime.second}</p>
         </div>
       </div>
       <div className='hidden lg:flex items-center gap-2 opacity-75'>
